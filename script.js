@@ -3,19 +3,28 @@ const ctx = canvas.getContext('2d');
 
 let cont = document.querySelector(".container");
 
-canvas.width = "20";
-canvas.height = "400";
+canvas.width = "40";
+canvas.height = "1000";
 
-cont.style.rotate = "90deg";
+
+let g = 9.81;
+
+let us = 0.5;
+
+let theta = 9 * Math.PI / 180;
+
+cont.style.rotate = `${90 - theta * 180 / Math.PI}deg`;
+
+console.log(us);
+console.log(Math.tan(theta));
 
 const ball = {
-    x: 10,
-    y: 10,
-    radius: 10,
+    x: 20,
+    y: 20,
+    radius: 20,
     color: 'blue',
+    gravity: (g * (Math.sin(theta) - us * Math.cos(theta))) / 100 * Math.PI,
     dy: 3,
-    dx: 3,
-    gravity: 0.2,
 };
 
 function drawBall() {
@@ -24,7 +33,6 @@ function drawBall() {
     ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
     ctx.fillStyle = ball.color;
     ctx.fill();
-    ctx.closePath();
 }
 
 function update() {
