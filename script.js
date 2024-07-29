@@ -1,14 +1,21 @@
-const canvas = document.getElementById('bouncingBallCanvas');
+const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+let cont = document.querySelector(".container");
+
+canvas.width = "20";
+canvas.height = "400";
+
+cont.style.rotate = "90deg";
+
 const ball = {
-    x: canvas.width / 2,
-    y: canvas.height / 2,
-    radius: 20,
-    color: 'black',
-    dy: 2,
+    x: 10,
+    y: 10,
+    radius: 10,
+    color: 'blue',
+    dy: 3,
+    dx: 3,
     gravity: 0.2,
-    bounce: 1
 };
 
 function drawBall() {
@@ -20,24 +27,17 @@ function drawBall() {
     ctx.closePath();
 }
 
-function updateBall() {
-    ball.dy += ball.gravity;
+function update() {
     ball.y += ball.dy;
-
+    ball.dy += ball.gravity;
     if (ball.y + ball.radius > canvas.height) {
         ball.y = canvas.height - ball.radius;
-        ball.dy *= -ball.bounce;
-    }
-
-    if (ball.y - ball.radius < 0) {
-        ball.y = ball.radius;
-        ball.dy *= -ball.bounce;
     }
 }
 
 function animate() {
     drawBall();
-    updateBall();
+    update();
     requestAnimationFrame(animate);
 }
 

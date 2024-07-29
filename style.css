@@ -6,17 +6,23 @@
 
 canvas {
     position: absolute;
+    border-right: 3px solid black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container {
+    position: relative;
+    width: 20px;
+    height: 400px;
 }
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-}
-
-canvas {
-    border: 1px solid black;
+    position: relative;
 }
