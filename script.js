@@ -6,7 +6,6 @@ let cont = document.querySelector(".container");
 canvas.width = "40";
 canvas.height = "1000";
 
-
 let g = 9.81;
 
 let us = 0.5;
@@ -23,7 +22,7 @@ const ball = {
     y: 20,
     radius: 20,
     color: 'blue',
-    gravity: (g * (Math.sin(theta) - us * Math.cos(theta))) / 100 * Math.PI,
+    gravity: (g * (Math.sin(theta) + (us * Math.cos(theta)))) / 100 * Math.PI,
     dy: 3,
 };
 
